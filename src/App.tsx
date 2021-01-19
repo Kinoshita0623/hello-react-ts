@@ -1,9 +1,11 @@
 import React from 'react';
 import Bmi from './Bmi';
-
+import Todo from './Todo';
+import TodoList from './TodoList';
 
 interface State {
-  count: number 
+  count: number,
+  todos: Array<Todo>
 }
 class App extends React.Component<{}, State>{
   
@@ -11,6 +13,20 @@ class App extends React.Component<{}, State>{
     super(props)
     this.state = {
       count: 0,
+      todos: [
+        {
+          title: 'Hoge',
+          text: 'hogehogepiiiii'
+        },
+        {
+          title: 'Piyo',
+          text: 'ぴよっぴーーーーぴぴぴー'
+        },
+        {
+          title: 'Fuga',
+          text: 'ふふぁふふぁがふが'
+        }
+      ]
     };
 
   }
@@ -24,6 +40,8 @@ class App extends React.Component<{}, State>{
         <Bmi/>
       <div>
       </div>
+      <h1>Todo一覧</h1>
+      <TodoList todos={ this.state.todos }/>
     </div>);
   }
 }
