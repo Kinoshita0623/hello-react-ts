@@ -48,13 +48,13 @@ export default class TodoForm extends React.Component<Props, State>{
         return (
             <div>
                 <div>
-                    title:<input type="text" onChange={this.handleInputTitle} value={this.state.title} />
+                    title:<input type="text" onChange={this.handleInputTitle.bind(this)} value={this.state.title} />
                 </div>
                 <div>
-                    text:<input type="text" onChange={this.handleInputText} value={ this.state.text } />
+                    text:<input type="text" onChange={this.handleInputText.bind(this)} value={ this.state.text } />
                 </div>
                 <div>
-                    <button onClick={ this.handleSubmit }>保存</button>
+                    <button onClick={ this.handleSubmit.bind(this) }>保存</button>
                 </div>
             </div>
         );

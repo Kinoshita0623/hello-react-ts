@@ -51,7 +51,7 @@ class App extends React.Component<{}, State>{
       </div>
       <h1>Todo一覧</h1>
       <TodoList todos={this.state.todos} />
-      <TodoForm onSubmit={ this.handleSubmitTodo } />
+      <TodoForm onSubmit={ this.handleSubmitTodo.bind(this) } />
     </div>);
   }
 }
