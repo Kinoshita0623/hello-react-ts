@@ -32,6 +32,14 @@ class App extends React.Component<{}, State>{
 
   }
 
+  handleSubmitTodo(todo: Todo) {
+    let todos = this.state.todos.slice();
+    todos.push(todo);
+    this.setState({
+      todos: todos
+    });
+  }
+
   render() {
     return (<div>
       <p>{this.state.count}</p>
@@ -42,7 +50,8 @@ class App extends React.Component<{}, State>{
       <div>
       </div>
       <h1>Todo一覧</h1>
-      <TodoList todos={ this.state.todos }/>
+      <TodoList todos={this.state.todos} />
+      <TodoForm onSubmit={ this.handleSubmitTodo } />
     </div>);
   }
 }
