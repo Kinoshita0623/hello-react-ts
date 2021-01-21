@@ -2,6 +2,7 @@ import React from 'react';
 import Bmi from './Bmi';
 import Todo from './Todo';
 import TodoList from './TodoList';
+import TodoForm from './TodoForm';
 
 interface State {
   count: number,
