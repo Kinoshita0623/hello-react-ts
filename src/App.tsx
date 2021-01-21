@@ -14,20 +14,7 @@ class App extends React.Component<{}, State>{
     super(props)
     this.state = {
       count: 0,
-      todos: [
-        {
-          title: 'Hoge',
-          text: 'hogehogepiiiii'
-        },
-        {
-          title: 'Piyo',
-          text: 'ぴよっぴーーーーぴぴぴー'
-        },
-        {
-          title: 'Fuga',
-          text: 'ふふぁふふぁがふが'
-        }
-      ]
+      todos: []
     };
 
   }

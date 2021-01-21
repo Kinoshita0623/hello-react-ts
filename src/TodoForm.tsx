@@ -44,7 +44,7 @@ export default class TodoForm extends React.Component<Props, State>{
                 text: '',
                 title: ''
             });
-            this.props.onSubmit({ title: title, text: text });
+            this.props.onSubmit(new Todo(title, text));
             
         }
     }
