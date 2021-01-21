@@ -19,6 +19,14 @@ class App extends React.Component<{}, State>{
 
   }
 
+  completedTodos = ()=> {
+    return this.state.todos.filter((todo) => todo.complete);
+  }
+
+  uncompleteTodos = () => {
+    return this.state.todos.filter((todo) => !todo.complete);
+  }
+
   handleSubmitTodo(todo: Todo) {
     let todos = this.state.todos.slice();
     todos.push(todo);
@@ -53,9 +61,14 @@ class App extends React.Component<{}, State>{
         <Bmi/>
       <div>
       </div>
-      <h1>Todo一覧</h1>
+      <h1>Todo</h1>
       <TodoList todos={this.state.todos} onCompleteTodo={ this.handleOnCompleteTodo }/>
-      <TodoForm onSubmit={ this.handleSubmitTodo.bind(this) } />
+      <TodoForm onSubmit={this.handleSubmitTodo.bind(this)} />
+      
+      <h2>達成済みTodo</h2>
+      <TodoList todos={this.completedTodos()} onCompleteTodo={this.handleOnCompleteTodo} />
+      <h2>未達成Todo</h2>
+      <TodoList todos={this.uncompleteTodos()} onCompleteTodo={ this.handleOnCompleteTodo } />
     </div>);
   }
 }
