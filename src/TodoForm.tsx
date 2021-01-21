@@ -24,23 +24,28 @@ export default class TodoForm extends React.Component<Props, State>{
         };
     }
 
-    handleInputTitle(e: React.ChangeEvent<HTMLInputElement>) {
+    handleInputTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
             title: e.target.value
         });
     }
 
-    handleInputText(e: React.ChangeEvent<HTMLInputElement>) {
+    handleInputText = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
             text: e.target.value
         });
     }
 
-    handleSubmit() {
+    handleSubmit = () => {
         let title = this.state.title;
         let text = this.state.text;
         if (title !== null && title?.length && text !== null && text?.length) {
-            this.props.onSubmit({title: title, text: text});
+            this.setState({
+                text: '',
+                title: ''
+            });
+            this.props.onSubmit({ title: title, text: text });
+            
         }
     }
 
@@ -48,13 +53,13 @@ export default class TodoForm extends React.Component<Props, State>{
         return (
             <div>
                 <div>
-                    title:<input type="text" onChange={this.handleInputTitle.bind(this)} value={this.state.title} />
+                    title:<input type="text" onChange={this.handleInputTitle} value={this.state.title} />
                 </div>
                 <div>
-                    text:<input type="text" onChange={this.handleInputText.bind(this)} value={ this.state.text } />
+                    text:<input type="text" onChange={this.handleInputText} value={ this.state.text } />
                 </div>
                 <div>
-                    <button onClick={ this.handleSubmit.bind(this) }>保存</button>
+                    <button onClick={ this.handleSubmit }>保存</button>
                 </div>
             </div>
         );
