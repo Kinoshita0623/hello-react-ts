@@ -27,6 +27,23 @@ class App extends React.Component<{}, State>{
     });
   }
 
+  handleOnCompleteTodo = (todoId: number) => {
+    let todos = this.state.todos.slice();
+    todos = todos.map((todo) => {
+      if (todo.id === todoId) {
+        let t = {
+          ...todo
+        }
+        t.complete = !t.complete;
+        return t;
+      }
+      return todo;
+    });
+    this.setState({
+      todos: todos
+    });
+  }
+
   render() {
     return (<div>
       <p>{this.state.count}</p>
@@ -37,7 +54,7 @@ class App extends React.Component<{}, State>{
       <div>
       </div>
       <h1>Todo一覧</h1>
-      <TodoList todos={this.state.todos} />
+      <TodoList todos={this.state.todos} onCompleteTodo={ this.handleOnCompleteTodo }/>
       <TodoForm onSubmit={ this.handleSubmitTodo.bind(this) } />
     </div>);
   }

@@ -10,7 +10,8 @@ interface Props {
 
 interface State {
     title?: string,
-    text?: string
+    text?: string,
+    todoSeq: number
 }
 
 export default class TodoForm extends React.Component<Props, State>{
@@ -20,7 +21,8 @@ export default class TodoForm extends React.Component<Props, State>{
 
         this.state = {
             title: props.title,
-            text: props.text
+            text: props.text,
+            todoSeq: 0
         };
     }
 
@@ -41,10 +43,11 @@ export default class TodoForm extends React.Component<Props, State>{
         let text = this.state.text;
         if (title !== null && title?.length && text !== null && text?.length) {
             this.setState({
+                todoSeq: this.state.todoSeq + 1,
                 text: '',
                 title: ''
             });
-            this.props.onSubmit(new Todo(title, text));
+            this.props.onSubmit(new Todo(this.state.todoSeq, title, text));
             
         }
     }
